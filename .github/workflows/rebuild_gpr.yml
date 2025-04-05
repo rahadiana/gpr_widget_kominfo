@@ -1,0 +1,49 @@
+# .github/workflows/scheduled-builds.yml
+name: Rebuild gpr
+
+on:
+  schedule:
+    - cron: '*/50 *  * * *'
+
+jobs:
+  build:
+    name: Trigger Site On Push
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ '16' ]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - name: cURL request
+        # Hit the webhook endpoint to rebuild  from the "main" branch
+        run: |
+          echo `date` > last_log.txt
+          #sudo npm i
+          #sudo npm i fs
+          #sudo time 100 node scan.js
+
+          curl -Ss https://widget.kominfo.go.id/data/covid-19/gpr.xml > gpr_covid/covid_gpr.xml
+          curl -Ss https://widget.kominfo.go.id/gpr-widget-kominfo.min.js > gpr-widget-kominfo.min.js
+          curl -Ss https://widget.kominfo.go.id/gpr-widget-kominfo.min.css > gpr-widget-kominfo.min.css
+          
+          sed -i 's/https:\/\/widget.kominfo.go.id\/gpr-widget-kominfo.min.css/https:\/\/rahadiana.github.io\/gpr_widget_kominfo\/gpr-widget-kominfo.min.css/g' gpr-widget-kominfo.min.js
+          sed -i 's/https:\/\/widget.kominfo.go.id\/data\/covid-19\/gpr.xml/https:\/\/rahadiana.github.io\/gpr_widget_kominfo\/gpr_covid\/covid_gpr.xml/g' gpr-widget-kominfo.min.js
+          sed -i "s/target=\"_blank\"/target=\"_blank\" rel=\"noreferrer noopener\"/g" gpr-widget-kominfo.min.js
+          sed -i 's/https:\/\/widget.kominfo.go.id\/images\//https:\/\/i0.wp.com\/widget.kominfo.go.id\/images\//g' gpr-widget-kominfo.min.css
+      - name: Commit
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "`date`"
+      - name: GitHub Push
+        uses: ad-m/github-push-action@master
+        with:
+          force: true
+          directory: "."
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
