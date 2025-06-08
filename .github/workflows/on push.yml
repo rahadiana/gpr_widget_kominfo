@@ -23,7 +23,7 @@ jobs:
           # #sudo npm i fs
           # #sudo time 100 node scan.js
 
-          curl -Ss https://widget.komdigi.go.id/data/covid-19/gpr.xml > gpr_covid/covid_gpr.xml
+          # curl -Ss https://widget.komdigi.go.id/data/covid-19/gpr.xml > gpr_covid/covid_gpr.xml
           # curl -Ss https://widget.komdigi.go.id/gpr-widget-kominfo.min.js > gpr-widget-kominfo.min.js
           # curl -Ss https://widget.komdigi.go.id/gpr-widget-kominfo.min.css > gpr-widget-kominfo.min.css
 
