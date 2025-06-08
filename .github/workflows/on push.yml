@@ -23,13 +23,20 @@ jobs:
           # #sudo npm i fs
           # #sudo time 100 node scan.js
 
+
+          # sed -i 's/https:\/\/widget.kominfo.go.id\/gpr-widget-kominfo.min.css/https:\/\/widget.kominfo.go.id\/gpr-widget-kominfo.min.css/g' gpr-widget-kominfo.min.js
+          # sed -i 's/https:\/\/widget.kominfo.go.id\/data\/covid-19\/gpr.xml/https:\/\/widget.kominfo.go.id\/gpr_covid\/covid_gpr.xml/g' gpr-widget-kominfo.min.js
+          # # sed -i "s/target=\"_blank\"/target=\"_blank\" rel=\"noreferrer noopener\"/g" gpr-widget-kominfo.min.js
+
+
+
           # curl -Ss https://widget.komdigi.go.id/data/covid-19/gpr.xml > gpr_covid/covid_gpr.xml
           # curl -Ss https://widget.komdigi.go.id/gpr-widget-kominfo.min.js > gpr-widget-kominfo.min.js
           # curl -Ss https://widget.komdigi.go.id/gpr-widget-kominfo.min.css > gpr-widget-kominfo.min.css
 
           # sed -i 's/https:\/\/widget.kominfo.go.id\/gpr-widget-kominfo.min.css/https:\/\/rahadiana.github.io\/gpr_widget_kominfo\/gpr-widget-kominfo.min.css/g' gpr-widget-kominfo.min.js
           # sed -i 's/https:\/\/widget.kominfo.go.id\/data\/covid-19\/gpr.xml/https:\/\/rahadiana.github.io\/gpr_widget_kominfo\/gpr_covid\/covid_gpr.xml/g' gpr-widget-kominfo.min.js
-          # sed -i "s/target=\"_blank\"/target=\"_blank\" rel=\"noreferrer noopener\"/g" gpr-widget-kominfo.min.js
+          # # sed -i "s/target=\"_blank\"/target=\"_blank\" rel=\"noreferrer noopener\"/g" gpr-widget-kominfo.min.js
           # sed -i 's/https:\/\/widget.kominfo.go.id\/images\//https:\/\/i0.wp.com\/widget.kominfo.go.id\/images\//g' gpr-widget-kominfo.min.css
           
           sed -i 's|https://widget.komdigi.go.id/images/|https://images.buffer.com/proxy/288xfit/https://widget.kominfo.go.id/images/|g' gpr-widget-kominfo.min.css
