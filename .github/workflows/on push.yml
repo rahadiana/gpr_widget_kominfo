@@ -18,14 +18,14 @@ jobs:
       - name: cURL request
         # Hit the webhook endpoint to rebuild  from the "main" branch
         run: |
-          echo `date` > last_log.txt
-          #sudo npm i
-          #sudo npm i fs
-          #sudo time 100 node scan.js
+          # echo `date` > last_log.txt
+          # #sudo npm i
+          # #sudo npm i fs
+          # #sudo time 100 node scan.js
 
-          curl -Ss https://widget.komdigi.go.id/data/covid-19/gpr.xml > gpr_covid/covid_gpr.xml
-          curl -Ss https://widget.komdigi.go.id/gpr-widget-kominfo.min.js > gpr-widget-kominfo.min.js
-          curl -Ss https://widget.komdigi.go.id/gpr-widget-kominfo.min.css > gpr-widget-kominfo.min.css
+          # curl -Ss https://widget.komdigi.go.id/data/covid-19/gpr.xml > gpr_covid/covid_gpr.xml
+          # curl -Ss https://widget.komdigi.go.id/gpr-widget-kominfo.min.js > gpr-widget-kominfo.min.js
+          # curl -Ss https://widget.komdigi.go.id/gpr-widget-kominfo.min.css > gpr-widget-kominfo.min.css
 
           sed -i 's/https:\/\/widget.kominfo.go.id\/gpr-widget-kominfo.min.css/https:\/\/rahadiana.github.io\/gpr_widget_kominfo\/gpr-widget-kominfo.min.css/g' gpr-widget-kominfo.min.js
           sed -i 's/https:\/\/widget.kominfo.go.id\/data\/covid-19\/gpr.xml/https:\/\/rahadiana.github.io\/gpr_widget_kominfo\/gpr_covid\/covid_gpr.xml/g' gpr-widget-kominfo.min.js
